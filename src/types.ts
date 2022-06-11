@@ -2,7 +2,7 @@ import { NarrowedContext, Context } from 'telegraf';
 import { Message, PhotoSize } from 'telegraf/typings/core/types/typegram';
 import { MountMap } from 'telegraf/typings/telegram-types';
 
-type Command = 'flip' | 'flipX' | 'flipY';
+type Command = 'flip' | 'flipX' | 'flipY' | 'resize' | 'crop';
 type CommandHandler<T> = (url: string, ...args: T[]) => Promise<Buffer>;
 type CommandWithArgs = [Command, ...unknown[]];
 

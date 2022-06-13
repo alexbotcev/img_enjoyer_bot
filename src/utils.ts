@@ -1,4 +1,5 @@
-import Jimp from 'jimp';
+import sharp, { Sharp } from 'sharp';
+import fetch from 'node-fetch';
 
 import { CommandWithArgs, TelegramMsg, TelegramImageFromMsg, Command } from './types';
 import { isPhotoMessage } from './typeGuards';
@@ -15,9 +16,18 @@ const getTextFromMsg = (message: TelegramMsg): string =>
 const parseTextFromMsg = (caption: string): CommandWithArgs =>
   caption.trim().slice(1).split(' ') as CommandWithArgs;
 
-const readImage = (url: string): Promise<Jimp> => Jimp.read(url);
+const stringToNumber = (param?: string): number | undefined =>
+  param !== undefined ? parseInt(param) : param;
 
-const getImageAsBuffer = (file: Jimp): Promise<Buffer> => file.getBufferAsync(file.getMIME());
+const downloadImage = async (url: string): Promise<ArrayBuffer> =>
+  fetch(url).then(result => result.arrayBuffer());
+
+const readImage = async (url: string): Promise<Sharp> => {
+  const buffer = await downloadImage(url);
+  return sharp(new Uint8Array(buffer));
+};
+
+const getImageAsBuffer = (file: Sharp): Promise<Buffer> => file.toBuffer();
 
 export {
   getImageAsBuffer,
@@ -26,4 +36,6 @@ export {
   readImage,
   parseTextFromMsg,
   isExistCommand,
+  downloadImage,
+  stringToNumber,
 };

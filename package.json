@@ -14,11 +14,14 @@
     "*.{ts,tsx,js,jsx}": "pnpm check"
   },
   "dependencies": {
-    "jimp": "0.16.1",
+    "node-fetch": "2.6.7",
+    "sharp": "0.30.6",
     "telegraf": "4.8.3"
   },
   "devDependencies": {
     "@types/node": "17.0.40",
+    "@types/node-fetch": "^2.6.1",
+    "@types/sharp": "^0.30.4",
     "@typescript-eslint/eslint-plugin": "5.22.0",
     "@typescript-eslint/parser": "5.22.0",
     "dotenv": "16.0.1",

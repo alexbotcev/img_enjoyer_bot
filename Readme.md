@@ -1,10 +1,8 @@
 # Image enjoyer
-___
 
 Simple bot for edit image in Telegram
 
 > Bot hasn't hosting
-***
 
 ## Commands
 

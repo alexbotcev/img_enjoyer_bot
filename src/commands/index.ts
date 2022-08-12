@@ -5,6 +5,7 @@ import { flipY } from './flipY';
 import { resize } from './resize';
 import { crop } from './crop';
 import { rotate } from './rotate';
+import { addText } from './addText';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 const COMMANDS: Record<Command, CommandHandler<any>> = {
@@ -14,6 +15,7 @@ const COMMANDS: Record<Command, CommandHandler<any>> = {
   resize,
   crop,
   rotate,
+  addText,
 };
 
 export { COMMANDS };

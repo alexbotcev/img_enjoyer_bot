@@ -39,8 +39,6 @@ const addText: CommandHandler<string> = async (photoUrl: string, ...text: string
   const fontSize =
     fontSizeRelativeToHeight > MIN_FONT_SIZE ? fontSizeRelativeToHeight : MIN_FONT_SIZE;
 
-  console.log('width', width, fontSize);
-
   // Max 2 rows
   const maxSymbolsPerRow = Math.ceil(width / (fontSize / 2));
   const firstRow = text.join(' ').slice(0, maxSymbolsPerRow);
